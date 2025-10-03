@@ -25,7 +25,7 @@ public:
 
     // 1 in 10 chance of car appearing from the left
     void drive() {
-        if (rand() % 10 == 1)
+        if (rand() % 8 == 1)
             cars.push_front(true);
         else
             cars.push_front(false);
@@ -65,21 +65,22 @@ public:
 };
 
 int main() {
+    srand(time(0));
     Lane lane1(20);
 
-    for (int i = 0; i < 20; i++) {
+    
+    for (int j = 0; j < 20; j++) {
+        lane1.drive();
+        for (int i = 0; i < 20; i++) {
         if (lane1.checkPos(i)) {
             std::cout << "1";
         } else {
             std::cout << "0";
         }
-    }
-    lane1.drive();
-    for (int i = 0; i < 20; i++) {
-        if (lane1.checkPos(i)) {
-            std::cout << "1";
-        } else {
-            std::cout << "0";
         }
+        std::cout << std::endl;
     }
+
+    
+
 }
