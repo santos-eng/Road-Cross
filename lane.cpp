@@ -8,7 +8,7 @@ Lane::Lane(int width) {
 }
 
 void Lane::drive() {
-    if (rand() % 8 == 1)
+    if (rand() % 10 == 1)
         cars.push_front(true);
     else
         cars.push_front(false);
