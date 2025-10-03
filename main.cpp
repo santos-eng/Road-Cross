@@ -1,8 +1,7 @@
 #include <iostream>
-#include <queue>
-#include "game.h"
-#include "player.h"
-#include "lane.h"  
+#include "game.cpp"
+#include "player.cpp"
+#include "lane.cpp"  
 
 
 
