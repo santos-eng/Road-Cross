@@ -83,7 +83,7 @@ void Game::run() {
 
 }
 
-Game::~Game() {
-    endwin();
+int Game::getNumLanes() {
+    return numLanes;
 }
 

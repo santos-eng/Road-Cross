@@ -20,7 +20,7 @@ public:
     void input();
     void logic();
     void run();
-    ~Game();
+    int getNumLanes();
 };
 
 #endif
