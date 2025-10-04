@@ -13,7 +13,7 @@ class Game {
     int laneWidth;
     int score;
     Player* player;
-    std::vector<Lane*> map;
+    std::vector<Lane*> carMap;
 public:
     Game(int w = 20, int h = 5);
     void draw();
