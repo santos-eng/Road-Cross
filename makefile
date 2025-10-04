@@ -10,7 +10,7 @@ SRC := $(wildcard *.cpp)
 OBJ := $(SRC:.cpp=.o)
 
 # Executable name
-TARGET := game
+TARGET := play
 
 # Default target
 all: $(TARGET)
