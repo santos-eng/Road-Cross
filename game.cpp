@@ -108,3 +108,12 @@ int Game::getNumLanes() {
 int Game::getScore() {
     return score;
 }
+
+Game::~Game() {
+    delete player;
+    for (int i = 0; i < carMap.size(); i++) {
+        Lane* temp = carMap.back();
+        carMap.pop_back();
+        delete temp;
+    }
+}

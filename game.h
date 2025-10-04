@@ -22,6 +22,7 @@ public:
     void run();
     int getNumLanes();
     int getScore();
+    ~Game();
 };
 
 #endif
