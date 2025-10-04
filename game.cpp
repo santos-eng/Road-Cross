@@ -11,21 +11,29 @@ Game::Game(int w, int h) {
 
 void Game::draw() {
     //Clear the current screen
-    system("clear");
+    clear();
     for (int i = 0; i < numLanes; i++) {
         for (int j = 0; j < laneWidth; j++) {
             if (map[i]->checkPos(j) && i != 0 && i != numLanes - 1)
-                std::cout << "#";
-            else if (player->x == j && player->y == i)
-                std::cout << "V";
+                mvaddch(i,j,'#');
+            else if (player->getX() == j && player->getY() == i)
+                mvaddch(i,j,'V');
             else 
-                std::cout << " ";
+                mvaddch(i,j,' ');
         }
-        std::cout << std::endl;
     }
+    mvaddstr(numLanes+1,0,"test");
+    refresh();
 }
 
 void Game::input() {
+    int c = (char)tolower(getch());
+    switch (c) {
+        case 'a':
+        case KEY_LEFT:
+            if (player->getX())
+            break;
+    }
 
 }
 
@@ -34,10 +42,22 @@ void Game::logic() {
 }
 
 void Game::run() {
+    initscr(); // Start ncurses
+    cbreak(); // disable buffer, emptied with enter
+    noecho(); // avoid printing to screen
+    curs_set(0); // hide cursor
+    keypad(stdscr, TRUE); // enable arrow keys
+    nodelay(stdscr, TRUE); //avoid getch blocking
     while (!quit) {
         input();
         draw();
         logic();
+        napms(50);
     }
 
 }
+
+Game::~Game() {
+    endwin();
+}
+

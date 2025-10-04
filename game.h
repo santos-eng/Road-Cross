@@ -4,6 +4,8 @@
 #include "lane.h"
 #include <vector>
 #include <iostream>
+#include <ncurses.h>
+#include <unistd.h>
 
 class Game {
     bool quit;
@@ -18,6 +20,7 @@ public:
     void input();
     void logic();
     void run();
+    ~Game();
 };
 
 #endif
