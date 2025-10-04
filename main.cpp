@@ -11,7 +11,13 @@ int main() {
     game.run();
 
     // Game over functionality
-    mvaddstr(game.getNumLanes() + 3, 0, "Game Over! Press any key to exit");
+    move(game.getNumLanes() + 1,0);
+    for (int i = 0; i < 3; i++)
+        clrtoeol();
+    mvaddstr(game.getNumLanes() + 1, 0, "Game Over! Press any key to exit");
+    mvprintw(game.getNumLanes() + 3, 0, "Final Score: %d", game.getScore());
+    refresh();
+    usleep(1000000); // Debounce
     nodelay(stdscr,FALSE); //getch is blocking now
     getch();
     endwin();

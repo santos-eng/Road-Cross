@@ -13,7 +13,10 @@ void Game::draw() {
     //Clear the current screen
     clear();
     for (int i = 0; i < numLanes; i++) {
-        mvaddch(i,0,'>');
+        if (i == 0 || i == numLanes - 1)
+            mvaddch(i,0,'>');
+        else 
+            mvaddch(i,0,'|');
         for (int j = 1; j <= laneWidth; j++) {
             if (carMap[i]->checkPos(j) && i != 0 && i != numLanes - 1)
                 mvaddch(i,j,'#');
@@ -22,9 +25,13 @@ void Game::draw() {
             else 
                 mvaddch(i,j,' ');
         }
-        mvaddch(i,laneWidth + 1,'<');
+        if (i == 0 || i == numLanes - 1)
+            mvaddch(i,laneWidth + 1,'<');
+        else 
+            mvaddch(i,laneWidth + 1,'|');
     }
     mvaddstr(numLanes+1,0,"Move with WASD or arrows, q to quit");
+    mvprintw(numLanes+3,0,"Currrent Score: %d", score);
     refresh();
 }
 
@@ -98,3 +105,6 @@ int Game::getNumLanes() {
     return numLanes;
 }
 
+int Game::getScore() {
+    return score;
+}

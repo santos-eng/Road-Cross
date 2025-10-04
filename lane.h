@@ -5,6 +5,7 @@
 class Lane {
     // Obstacles opposing the player
     std::deque<bool> cars;
+    
 public:
     Lane(int width);
 

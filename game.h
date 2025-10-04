@@ -21,6 +21,7 @@ public:
     void logic();
     void run();
     int getNumLanes();
+    int getScore();
 };
 
 #endif
