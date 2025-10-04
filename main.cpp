@@ -7,12 +7,13 @@
 
 int main() {
     srand(time(0));
-    Game game(30,5);
+    Game game(30,10);
     game.run();
 
     // Game over functionality
-    move(game.getNumLanes() + 1,0);
-    for (int i = 0; i < 3; i++)
+    
+    for (int i = 1; i < 4; i++)
+        move(game.getNumLanes() + i,0);
         clrtoeol();
     mvaddstr(game.getNumLanes() + 1, 0, "Game Over! Press any key to exit");
     mvprintw(game.getNumLanes() + 3, 0, "Final Score: %d", game.getScore());
