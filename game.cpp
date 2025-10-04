@@ -24,7 +24,7 @@ void Game::draw() {
         }
         mvaddch(i,laneWidth + 1,'<');
     }
-    mvaddstr(numLanes+1,0,"test");
+    mvaddstr(numLanes+1,0,"Move with WASD or arrows, q to quit");
     refresh();
 }
 
@@ -51,6 +51,9 @@ void Game::input() {
         case KEY_DOWN:
             if (y < numLanes - 1) player->setPos(x,++y);
             break;
+        case 'q':
+            quit = true;
+            break;
     }
 }
 
@@ -58,7 +61,9 @@ void Game::logic() {
     for (int i = 1; i < numLanes - 1; i++) {
         if (rand() % 10 == 1) {
             carMap[i]->drive();
-        }
+        } 
+        if (carMap[i]->checkPos(player->getX()) && i == player->getY())
+            quit = true;
     }
 }
 
