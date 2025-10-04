@@ -58,16 +58,27 @@ void Game::input() {
 }
 
 void Game::logic() {
+    int x = player->getX();
+    int y = player->getY();
     for (int i = 1; i < numLanes - 1; i++) {
         if (rand() % 10 == 1) {
             carMap[i]->drive();
         } 
-        if (carMap[i]->checkPos(player->getX()) && i == player->getY())
+        if (carMap[i]->checkPos(x) && i == y)
             quit = true;
+    }
+
+    if (player->getY() == numLanes - 1) {
+        // Reaching the end, send back to the start
+        score++;
+        player->setPos(x,0);
+        beep();
+        //flash(); //optional flash
     }
 }
 
 void Game::run() {
+    score = 0;
     initscr(); // Start ncurses
     cbreak(); // disable buffer, emptied with enter
     noecho(); // avoid printing to screen
